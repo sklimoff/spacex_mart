@@ -3,3 +3,9 @@ services:
     image: postgres:alpine
     env_file:
       - .env
+    ports:
+      - "25432:5432"
+  etl:
+    build: ./etl
+    env_file:
+      - .env

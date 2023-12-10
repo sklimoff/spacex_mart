@@ -1,0 +1,72 @@
+@startuml Schema
+!theme blueprint
+skinparam linetype ortho
+
+entity media_type {
+    * id: UUID
+    --
+    * name: TEXT
+}
+
+entity rocket {
+    * id: TEXT
+    --
+    * name: TEXT
+    * description: TEXT
+}
+
+entity rocket_publication {
+    * id: UUID
+    --
+    * rocket_id: TEXT
+    * media_type_id: UUID
+    * ref: TEXT
+}
+
+entity mission {
+    * id: TEXT
+    --
+    * name: TEXT
+    * description: TEXT
+}
+
+entity mission_publication {
+    * id: UUID
+    --
+    * rocket_id: TEXT
+    * media_type_id: UUID
+    * ref: TEXT
+}
+
+entity launch {
+    * id: TEXT
+    --
+    details: TEXT
+}
+
+entity launch_publication {
+    * id: UUID
+    --
+    * id: TEXT
+    * media_type_id: UUID
+    * ref: TEXT
+}
+
+entity data_mart {
+    * id: UUID
+    --
+    * type: INT
+    * name: TEXT
+    * media_type_name: TEXT
+    * ref: TEXT
+    * count: INT
+}
+
+rocket ||--o{ rocket_publication
+rocket_publication }o--o{ media_type
+mission ||--o{ mission_publication
+mission_publication }o--o{ media_type
+launch ||--o{ launch_publication
+launch_publication }o--o{ media_type
+
+@enduml

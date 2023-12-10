@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel
 
 
@@ -7,8 +9,15 @@ class RocketModel(BaseModel):
     description: str
     wikipedia: str
 
+
 class MissionModel(RocketModel):
-    ...
+    id: str
+    name: str
+    description: str
+    twitter: str
+    website: str
+    wikipedia: str
+
 
 class LaunchLinksModel(BaseModel):
     article_link: str | None
@@ -20,7 +29,11 @@ class LaunchLinksModel(BaseModel):
     video_link: str | None
     wikipedia: str | None
 
+
 class LaunchModel(BaseModel):
     id: str
     details: str | None
+    launch_date_local: datetime
+    launch_date_utc: datetime
     links: LaunchLinksModel
+    mission_name: str | None

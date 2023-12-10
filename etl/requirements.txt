@@ -1,0 +1,7 @@
+alembic==1.13.0
+backoff==2.2.1
+graphql_query==1.2.1
+psycopg2-binary==2.9.9
+pydantic==2.5.2
+pydantic-settings==2.1.0
+requests==2.31.0
